@@ -1,0 +1,30 @@
+<div style="display: flex;flex-direction: column;gap: 12px;padding:24px">
+  <div *ngFor="let product of products; index as productId">
+    <div style="display: inline-flex;gap: 8px;align-items: flex-start;">
+      <div [routerLink]="['/products', product.productId]">
+        <div>
+          <img
+            [src]="product.imageUrl"
+            style="object-fit: contain;width: 150px;height: 150px;"
+          />
+        </div>
+      </div>
+      <div style="display: flex;flex-direction: column;gap: 6px;">
+        <span>{{ product.name }}</span>
+        <span>{{ product.price | currency: 'INR' }}</span>
+        <span>{{ product.description }}</span>
+        <div class="star-rating">
+          <span
+            *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+            [class.filled]="i < product.rating"
+            >★</span
+          >
+        </div>
+        <app-product-item
+          [product]="product"
+          [productId]="product.productId"
+        ></app-product-item>
+      </div>
+    </div>
+  </div>
+</div>

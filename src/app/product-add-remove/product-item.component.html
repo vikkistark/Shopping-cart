@@ -1,0 +1,27 @@
+<div
+  style="display: inline-flex;justify-content: space-between;align-items: center;gap: 24px;"
+>
+  <div
+    style="background: none;border: 1px solid #c3c5c8;border-radius: 6px;width: 105px;display: inline-flex;justify-content: space-between;align-items: center;"
+    *ngIf="product.quantity > 0"
+  >
+    <button style="background: none;border: 0;" (click)="decreaseQuantity()">
+      <span>-</span>
+    </button>
+    <span>{{ product.quantity }}</span>
+    <button style="background: none;border: 0;" (click)="increaseQuantity()">
+      <span>+</span>
+    </button>
+  </div>
+  <div
+    (click)="increaseQuantity()"
+    *ngIf="product.quantity < 1"
+    style="background: none;border: 1px solid #c3c5c8;border-radius: 6px;width: 60px;text-align: center;"
+  >
+    <button style="background: none;border: 0;color:#333333">Add</button>
+  </div>
+
+  <div *ngIf="addCart" (click)="addToCart()">
+    <button style="border-radius:6px" type="submit">Add To Cart</button>
+  </div>
+</div>
